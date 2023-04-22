@@ -4,9 +4,11 @@ import uvicorn
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 
+from config import get_config
+
 logger = logging.getLogger(__name__)
 
-
+cfg = get_config()
 app = FastAPI(title='Dalle image api server')
 # Your CORS
 app.add_middleware(
@@ -21,7 +23,6 @@ app.add_middleware(
 @app.get("/ping", status_code=status.HTTP_200_OK)
 async def pong():
     return {"ping": "pong!"}
-
 
 
 
