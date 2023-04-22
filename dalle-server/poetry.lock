@@ -322,6 +322,17 @@ trio = ["trio (>=0.14,<0.23)"]
 wmi = ["wmi (>=1.5.1,<2.0.0)"]
 
 [[package]]
+name = "dotenv"
+version = "0.0.5"
+description = "Handle .env files"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "dotenv-0.0.5.tar.gz", hash = "sha256:b58d2ab3f83dbd4f8a362b21158a606bee87317a9444485566b3c8f0af847091"},
+]
+
+[[package]]
 name = "email-validator"
 version = "2.0.0.post2"
 description = "A robust email address syntax and deliverability validation library."
@@ -1427,4 +1438,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "69418e9c53c84824e39bb33facf1a7e3874535a659c5d120c7d97e5be0681940"
+content-hash = "31b98e1bc6a451de353393a093e8ac7f6f753eeb954361e44ba9809fb3df4ce1"
