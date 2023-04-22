@@ -1,24 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>wallet</title>
-    <base href="/" />
-    <link rel="icon" href="favicon.ico" />
-    <link type="text/css" rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <main>
-      <img src="logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rip</title>
+  <base href="/" />
+  <link rel="icon" href="favicon.ico" />
+  <link type="text/css" rel="stylesheet" href="main.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <main>
+    <img src="logo2.svg" alt="DFINITY logo" />
+    <section>
+      <div class="flex items-center">
+        <button id="iiLoginBtn"
+          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">II
+          Log In
+        </button>
+        <button id="nfidLoginBtn"
+          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          type="submit">NFID Login</button>
+        <button id="logoutBtn"
+          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Log
+          Out
+        </button>
+      </div>
+
+      <div align="center">
+        <h4>Current Principal:</h4>
+        <div id="principal"></div>
+      </div>
+    </section>
+
+    <!-- TODO: delete -->
+    <section>
+      <form id="greetForm" action="#">
         <label for="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
+        <input class="border-4 border-indigo-200" id="name" alt="Name" type="text" />
         <button type="submit">Click Me!</button>
       </form>
       <section id="greeting"></section>
-    </main>
-  </body>
+    </section>
+  </main>
+</body>
+
 </html>
