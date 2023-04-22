@@ -7,5 +7,8 @@
         "dev": "cd src/minter_frontend && npm run dev",
         "prestart": "npm run copy:types",
         "copy:types": "rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/** --exclude='assets' --exclude='idl/' --exclude='*.wasm' --delete src/declarations"
+    },
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^15.0.2"
     }
 }

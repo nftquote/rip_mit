@@ -1,3 +1,11 @@
+type GenerateAssetArgs = record {
+    phrase: text;
+};
+
+type GenerateAssetResult = record {
+    url: text;
+};
+
 service : {
-    "greet": (text) -> (text) query;
+    "generate_asset": (GenerateAssetArgs) -> (GenerateAssetResult);
 }

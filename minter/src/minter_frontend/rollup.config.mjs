@@ -1,3 +1,6 @@
+import * as fs from "fs";
+import * as path from "path";
+import * as childprocess from "child_process";
 import svelte from "rollup-plugin-svelte";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
@@ -9,38 +12,28 @@ import inject from '@rollup/plugin-inject';
 import json from "@rollup/plugin-json";
 
 const production = !process.env.ROLLUP_WATCH;
-const path = require("path");
 
 function initCanisterIds() {
-  let localCanisters, localIiCanister, prodCanisters, canisters;
-  try {
-    localCanisters = require(path.resolve(
-      "..",
-      "..",
-      ".dfx",
-      "local",
-      "canister_ids.json"
-    ));
-  } catch (error) {
-    console.log("No local canister_ids.json found. Continuing production");
-  }
-  try {
-    localIiCanister = require(path.resolve(
-      "..",
-      "..",
-      "internet-identity",
-      ".dfx",
-      "local",
-      "canister_ids.json"
-    ));
-  } catch (error) {
-    console.log("No local internet-identity canister_ids.json found. Continuing production");
-  }
-  try {
-    prodCanisters = require(path.resolve("..", "..", "canister_ids.json"));
-  } catch (error) {
-    console.log("No production canister_ids.json found. Continuing with local");
-  }
+  const localCanisters = readJSON(path.resolve(
+    "..",
+    "..",
+    ".dfx",
+    "local",
+    "canister_ids.json"
+  ));
+  const localIiCanister = readJSON(path.resolve(
+    "..",
+    "..",
+    "internet-identity",
+    ".dfx",
+    "local",
+    "canister_ids.json"
+  ));
+  const prodCanisters = readJSON(path.resolve(
+    "..",
+    "..",
+    "canister_ids.json",
+  ));
 
   const network =
     process.env.DFX_NETWORK ||
@@ -54,8 +47,6 @@ function initCanisterIds() {
   return { canisterIds, network };
 }
 
-const { canisterIds, network } = initCanisterIds();
-
 function serve() {
   let server;
 
@@ -66,7 +57,7 @@ function serve() {
   return {
     writeBundle() {
       if (server) return;
-      server = require("child_process").spawn(
+      server = childprocess.spawn(
         "npm",
         ["run", "start", "--", "--dev"],
         {
@@ -81,7 +72,19 @@ function serve() {
   };
 }
 
-console.log(canisterIds)
+function readJSON(jsonPath) {
+  try {
+    const result =  fs.readFileSync(jsonPath, { encoding: "utf-8" })
+    
+    return JSON.parse(result);
+  } catch (err) {}
+
+  return null;
+}
+
+const { canisterIds, network } = initCanisterIds();
+
+console.log("canisterIds: ", canisterIds)
 
 export default {
   input: "src/main.js",
@@ -102,7 +105,7 @@ export default {
     resolve({
       preferBuiltins: false,
       browser: true,
-      dedupe: ["svelte"],
+      dedupe: ["svelte", "@dfinity/agent"],
     }),
     replace({
       ...Object.assign(

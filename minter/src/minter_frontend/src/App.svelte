@@ -1,18 +1,16 @@
-<main>
-  <CanisterIds />
-  <WithBackend />
-</main>
+<div class="wrap">
+  <MintForm />
+</div>
 
 <script>
-  import CanisterIds from "./components/CanisterIds.svelte";
-  import WithBackend from "./components/WithBackend.svelte";
+  import MintForm from "./components/MintForm.svelte";
 </script>
 
 <style>
-  main {
+  .wrap {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    padding: 1em;
+    padding: 40px;
   }
 </style>
