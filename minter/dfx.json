@@ -1,0 +1,22 @@
+{
+    "canisters": {
+      "minter_frontend": {
+        "frontend": {
+          "entrypoint": "src/minter_frontend/public/index.html"
+        },
+        "source": [
+          "src/minter_frontend/public"
+        ],
+        "type": "assets"
+      }
+    },
+    "defaults": {
+      "build": {
+        "args": "",
+        "packtool": ""
+      }
+    },
+    "dfx": "0.13.1",
+    "version": 1
+  }
+  

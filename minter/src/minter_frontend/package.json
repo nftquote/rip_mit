@@ -1,0 +1,25 @@
+{
+    "name": "minter-frontend",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "build": "rollup -c --bundleConfigAsCjs",
+        "dev": "rollup -c -w --bundleConfigAsCjs",
+        "start": "sirv public --no-clear"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^24.1.0",
+        "@rollup/plugin-inject": "^5.0.3",
+        "@rollup/plugin-json": "^6.0.0",
+        "@rollup/plugin-node-resolve": "^15.0.2",
+        "@rollup/plugin-replace": "^5.0.2",
+        "@rollup/plugin-terser": "^0.4.1",
+        "rollup": "^3.20.7",
+        "rollup-plugin-css-only": "^4.3.0",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-polyfill-node": "^0.12.0",
+        "rollup-plugin-svelte": "^7.1.4",
+        "sirv-cli": "^2.0.2",
+        "svelte": "^3.58.0"
+    }
+}

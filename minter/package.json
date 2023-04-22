@@ -1,0 +1,11 @@
+{
+    "name": "minter",
+    "version": "0.1.0",
+    "scripts": {
+        "build": "cd src/minter_frontend && npm run build",
+        "prebuild": "npm run copy:types",
+        "dev": "cd src/minter_frontend && npm run dev",
+        "prestart": "npm run copy:types",
+        "copy:types": "rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/** --exclude='assets' --exclude='idl/' --exclude='*.wasm' --delete src/declarations"
+    }
+}
