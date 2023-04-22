@@ -23,9 +23,7 @@
   }
 
   async function submit() {
-    const result = await backend.generate_asset({
-      phrase,
-    });
+    const result = await backend.generate_asset(phrase);
 
     console.log(result);
   }
