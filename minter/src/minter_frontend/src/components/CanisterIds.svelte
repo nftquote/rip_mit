@@ -1,5 +1,6 @@
 <div>
   <p>Frontend canister ID: {process.env.MINTER_FRONTEND_CANISTER_ID}</p>
+  <p>Backend canister ID: {process.env.MINTER_BACKEND_CANISTER_ID}</p>
 </div>
 
 <style>

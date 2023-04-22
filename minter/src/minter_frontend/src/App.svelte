@@ -1,10 +1,12 @@
-<script>
-  import CanisterIds from "./components/CanisterIds.svelte";
-</script>
-
 <main>
   <CanisterIds />
+  <WithBackend />
 </main>
+
+<script>
+  import CanisterIds from "./components/CanisterIds.svelte";
+  import WithBackend from "./components/WithBackend.svelte";
+</script>
 
 <style>
   main {

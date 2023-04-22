@@ -90,6 +90,7 @@ export default {
     format: "umd",
     name: "app",
     file: "public/build.js",
+    inlineDynamicImports: true,
   },
   plugins: [
     svelte({
@@ -103,8 +104,8 @@ export default {
       browser: true,
       dedupe: ["svelte"],
     }),
-    replace(
-      Object.assign(
+    replace({
+      ...Object.assign(
         {
           "process.env.DFX_NETWORK": JSON.stringify(network),
           "process.env.NODE_ENV": JSON.stringify(production ? "production" : "development"),
@@ -115,9 +116,12 @@ export default {
             ["process.env." + canisterName.toUpperCase() + "_CANISTER_ID"]:
               JSON.stringify(canisterIds[canisterName][network]),
           }))
-      )
-    ),
-    commonjs(),
+      ),
+      preventAssignment: true,
+    }),
+    commonjs({
+      browser: true,
+    }),
     inject({
       Buffer: ["buffer", "Buffer"],
       process: "process/browser",
